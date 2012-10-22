@@ -13,7 +13,7 @@
  * 
  */
 
-package me.lucasemanuel.crownconquest;
+package me.lucasemanuel.crownconquest.listeners;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -35,6 +35,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import me.lucasemanuel.crownconquest.Main;
 import me.lucasemanuel.crownconquest.utils.ConsoleLogger;
 
 public class PlayerListener implements Listener {

@@ -13,7 +13,7 @@
  * 
  */
 
-package me.lucasemanuel.crownconquest;
+package me.lucasemanuel.crownconquest.managers;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -24,6 +24,7 @@ import org.bukkit.Location;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 
+import me.lucasemanuel.crownconquest.Main;
 import me.lucasemanuel.crownconquest.utils.ConsoleLogger;
 import me.lucasemanuel.crownconquest.utils.SLAPI;
 import me.lucasemanuel.crownconquest.utils.SerializedLocation;

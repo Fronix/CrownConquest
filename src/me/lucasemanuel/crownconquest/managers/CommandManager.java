@@ -13,8 +13,9 @@
  * 
  */
 
-package me.lucasemanuel.crownconquest;
+package me.lucasemanuel.crownconquest.managers;
 
+import me.lucasemanuel.crownconquest.Main;
 import me.lucasemanuel.crownconquest.utils.ConsoleLogger;
 
 import org.bukkit.ChatColor;

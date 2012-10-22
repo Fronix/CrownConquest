@@ -13,7 +13,7 @@
  * 
  */
 
-package me.lucasemanuel.crownconquest;
+package me.lucasemanuel.crownconquest.managers;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -23,6 +23,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import me.lucasemanuel.crownconquest.Main;
 import me.lucasemanuel.crownconquest.utils.ConsoleLogger;
 import me.lucasemanuel.crownconquest.utils.SLAPI;
 import me.lucasemanuel.crownconquest.utils.SerializedLocation;

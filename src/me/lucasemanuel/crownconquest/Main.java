@@ -15,6 +15,11 @@
 
 package me.lucasemanuel.crownconquest;
 
+import me.lucasemanuel.crownconquest.listeners.BlockListener;
+import me.lucasemanuel.crownconquest.listeners.PlayerListener;
+import me.lucasemanuel.crownconquest.managers.CommandManager;
+import me.lucasemanuel.crownconquest.managers.CrownManager;
+import me.lucasemanuel.crownconquest.managers.TeamManager;
 import me.lucasemanuel.crownconquest.utils.*;
 
 import org.bukkit.ChatColor;

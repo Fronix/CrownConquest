@@ -13,7 +13,7 @@
  * 
  */
 
-package me.lucasemanuel.crownconquest;
+package me.lucasemanuel.crownconquest.listeners;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -24,6 +24,7 @@ import org.bukkit.event.block.BlockBurnEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
+import me.lucasemanuel.crownconquest.Main;
 import me.lucasemanuel.crownconquest.utils.ConsoleLogger;
 
 public class BlockListener implements Listener {
