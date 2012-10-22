@@ -172,7 +172,7 @@ public class TeamManager {
 		return null;
 	}
 
-	private String getTeamNameFromPlayer(Player player) {
+	public String getTeamNameFromPlayer(Player player) {
 		
 		for(Entry<String, HashSet<Player>> entry : playerlists.entrySet()) {
 			for(Player tempplayer : entry.getValue()) {

@@ -105,6 +105,7 @@ public class PlayerListener implements Listener {
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	@EventHandler(priority=EventPriority.HIGHEST, ignoreCancelled=true)
 	public void onPlayerPickup(PlayerPickupItemEvent event) {
 		
@@ -120,15 +121,19 @@ public class PlayerListener implements Listener {
 			}
 			
 			player.getInventory().setHelmet(new ItemStack(Material.GOLD_HELMET));
+			
 			player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 72000000, 3));
+			player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 72000000, 3));
+			player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 72000000, 3));
 			
 			plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 				public void run() {
 					player.getInventory().remove(Material.GOLD_HELMET);
+					player.updateInventory();
 				}
 			}, 1L);
 			
-			plugin.getServer().broadcastMessage(ChatColor.LIGHT_PURPLE + player.getName() + ChatColor.WHITE + " har plockat upp kronan!");
+			plugin.getServer().broadcastMessage("Lag " + ChatColor.LIGHT_PURPLE + plugin.getTeamManager().getTeamNameFromPlayer(player) + ChatColor.WHITE + " har plockat upp kronan!");
 		}
 	}
 	
