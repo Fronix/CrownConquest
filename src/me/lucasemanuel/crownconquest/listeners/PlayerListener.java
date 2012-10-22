@@ -124,7 +124,7 @@ public class PlayerListener implements Listener {
 			
 			player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 72000000, 3));
 			player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 72000000, 3));
-			player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 72000000, 3));
+			player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 72000000, 1));
 			
 			plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 				public void run() {
