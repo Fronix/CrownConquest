@@ -1,0 +1,26 @@
+name: CrownConquest
+main: me.lucasemanuel.crownconquest.Main
+version: 1.0
+
+commands:
+  start:
+    description: Starts the 2 minute countdown.
+    usage: /<command>
+    permission: crownconquest.commands.start
+  setcrownspawn:
+    description: Adds crown spawnpoint.
+    usage: /<command>
+    permission: crownconquest.commands.setcrownspawn
+  setteamspawn:
+    description: Adds a spawnpoint for a team.
+    usage: /<command> <teamname>
+    permission: crownconquest.commands.setteamspawn
+  spawncrown:
+    description: Spawns a crown at a random preset location.
+    usage: /<command>
+    permission: crownconquest.commands.spawncrown
+    
+permissions:
+  crownconquest.signs.registerteamsign:
+    description: Allows a player to register a sign that allows players to join teams.
+    default: op
