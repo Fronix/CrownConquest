@@ -29,6 +29,11 @@ public class Config {
 			save = true;
 		}
 		
+		if(!config.contains("team")) {
+			config.set("team.LucasEmanuel", "sture");
+			save = true;
+		}
+		
 		if(save) {
 			plugin.saveConfig();
 		}

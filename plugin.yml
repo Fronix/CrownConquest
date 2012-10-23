@@ -19,6 +19,10 @@ commands:
     description: Spawns a crown at a random preset location.
     usage: /<command>
     permission: crownconquest.commands.spawncrown
+  teams:
+    description: Prints the names of the teams and their members.
+    usage: /<command>
+    permission: crownconquest.commands.teams
     
 permissions:
   crownconquest.signs.registerteamsign:

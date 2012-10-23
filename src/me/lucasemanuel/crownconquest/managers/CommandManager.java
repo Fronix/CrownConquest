@@ -68,6 +68,10 @@ public class CommandManager implements CommandExecutor {
 			case "spawncrown":
 				plugin.getCrownManager().spawnCrown();
 				return true;
+				
+			case "teams":
+				plugin.getTeamManager().printMembers(sender);
+				return true;
 		}
 		
 		return false;

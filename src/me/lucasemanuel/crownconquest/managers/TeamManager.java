@@ -22,6 +22,7 @@ import java.util.Map.Entry;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.block.Sign;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import me.lucasemanuel.crownconquest.Main;
@@ -31,6 +32,7 @@ import me.lucasemanuel.crownconquest.utils.SerializedLocation;
 
 public class TeamManager {
 	
+	private Main plugin;
 	private ConsoleLogger logger;
 	
 	private HashMap<String, Location> teamspawnlocations;
@@ -39,11 +41,12 @@ public class TeamManager {
 	private HashMap<String, HashSet<Player>> playerlists;
 	
 	public TeamManager(Main instance) {
+		plugin = instance;
 		logger = new ConsoleLogger(instance, "TeamManager");
 		
-		loadTeamLocations();
-		
 		playerlists = new HashMap<String, HashSet<Player>>();
+		
+		loadTeamLocations();
 		
 		logger.debug("Initiated");
 	}
@@ -85,7 +88,7 @@ public class TeamManager {
 		
 		if(loadedSigns != null) {
 			for(Entry<SerializedLocation, String> entry : loadedSigns.entrySet()) {
-				teamsignlocations.put(entry.getKey().deserialize(), entry.getValue());
+				registerTeamSign(((Sign)entry.getKey().deserialize().getBlock().getState()), entry.getValue());
 			}
 		}
 	}
@@ -102,14 +105,10 @@ public class TeamManager {
 		
 		if(playerlists.containsKey(teamname)) {
 			if(playerteam == null) {
+				
 				HashSet<Player> playerlist = playerlists.get(teamname);
 				
-				if(playerlist == null) playerlist = new HashSet<Player>();
-				
 				playerlist.add(player);
-				
-				// In case the list was null when retrieved
-				playerlists.put(teamname, playerlist);
 				
 				return true;
 			}
@@ -211,6 +210,26 @@ public class TeamManager {
 		}
 		catch(Exception e) {
 			logger.severe("Error while saving data! Message: " + e.getMessage());
+		}
+	}
+
+	public void addToConfiguredTeam(Player player) {
+		
+		String teamname = plugin.getConfig().getString("team." + player.getName());
+		
+		if(teamname != null) {
+			addToTeam(player, teamname);
+		}
+	}
+
+	public void printMembers(CommandSender sender) {
+
+		for(Entry<String, HashSet<Player>> entry : playerlists.entrySet()) {
+			sender.sendMessage("Lag: " + ChatColor.GREEN + entry.getKey());
+			
+			for(Player player : entry.getValue()) {
+				sender.sendMessage(" - " + ChatColor.LIGHT_PURPLE + player.getName());
+			}
 		}
 	}
 }

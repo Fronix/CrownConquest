@@ -28,6 +28,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType.SlotType;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
@@ -56,6 +57,14 @@ public class PlayerListener implements Listener {
 		event.setRespawnLocation(event.getRespawnLocation().getWorld().getSpawnLocation());
 		
 		plugin.getTeamManager().removePlayer(event.getPlayer());
+	}
+	
+	@EventHandler(priority=EventPriority.HIGHEST, ignoreCancelled=true)
+	public void onPlayerJoin(PlayerJoinEvent event) {
+		if(!plugin.getStatus()) {
+			plugin.getTeamManager().addToConfiguredTeam(event.getPlayer());
+			plugin.getTeamManager().teleportToTeamSpawn(event.getPlayer());
+		}
 	}
 	
 	@EventHandler(priority=EventPriority.HIGHEST, ignoreCancelled=true)

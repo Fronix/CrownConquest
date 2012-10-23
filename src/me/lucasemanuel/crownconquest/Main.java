@@ -77,6 +77,7 @@ public class Main extends JavaPlugin {
 		this.getCommand("setcrownspawn").setExecutor(commands);
 		this.getCommand("setteamspawn").setExecutor(commands);
 		this.getCommand("spawncrown").setExecutor(commands);
+		this.getCommand("teams").setExecutor(commands);
 		
 		logger.debug("... done!");
 		
