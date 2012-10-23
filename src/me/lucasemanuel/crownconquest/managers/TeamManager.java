@@ -222,7 +222,7 @@ public class TeamManager {
 		}
 	}
 
-	public void printMembers(CommandSender sender) {
+	public void sendTeamInfo(CommandSender sender) {
 
 		for(Entry<String, HashSet<Player>> entry : playerlists.entrySet()) {
 			sender.sendMessage("Lag: " + ChatColor.GREEN + entry.getKey());

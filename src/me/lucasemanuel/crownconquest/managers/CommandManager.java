@@ -70,7 +70,7 @@ public class CommandManager implements CommandExecutor {
 				return true;
 				
 			case "teams":
-				plugin.getTeamManager().printMembers(sender);
+				plugin.getTeamManager().sendTeamInfo(sender);
 				return true;
 		}
 		
