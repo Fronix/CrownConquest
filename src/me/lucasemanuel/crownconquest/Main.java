@@ -80,6 +80,7 @@ public class Main extends JavaPlugin {
 		CommandManager commands = new CommandManager(this);
 		
 		this.getCommand("start").setExecutor(commands);
+		this.getCommand("stop").setExecutor(commands);
 		this.getCommand("setcrownspawn").setExecutor(commands);
 		this.getCommand("setteamspawn").setExecutor(commands);
 		this.getCommand("spawncrown").setExecutor(commands);
@@ -104,7 +105,7 @@ public class Main extends JavaPlugin {
 			public void run() {
 				activate();
 			}
-		}, 24000L);
+		}, 2400L);
 	}
 	
 	public boolean getStatus() {
@@ -125,5 +126,13 @@ public class Main extends JavaPlugin {
 
 	public CrownManager getCrownManager() {
 		return crownmanager;
+	}
+
+	public void stop() {
+		status = false;
+		
+		getServer().broadcastMessage(ChatColor.GOLD + "Spelet är över!");
+		
+		getLocationManager().sendEveryoneToSpectatorPoint();
 	}
 }

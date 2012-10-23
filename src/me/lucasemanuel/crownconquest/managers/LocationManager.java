@@ -16,6 +16,7 @@
 package me.lucasemanuel.crownconquest.managers;
 
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
 import me.lucasemanuel.crownconquest.Main;
 import me.lucasemanuel.crownconquest.utils.ConsoleLogger;
@@ -79,5 +80,13 @@ public class LocationManager {
 				logger.severe("Could not save spectatorspawn! Message: " + e.getMessage());
 			}
 		}
+	}
+
+	public void sendEveryoneToSpectatorPoint() {
+		
+		for(Player player : plugin.getServer().getOnlinePlayers()) {
+			player.teleport(spectatorspawn);
+		}
+		
 	}
 }

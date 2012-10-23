@@ -1,6 +1,6 @@
 name: CrownConquest
 main: me.lucasemanuel.crownconquest.Main
-version: 1.3
+version: 1.5
 depend: [WorldGuard, WorldEdit]
 
 commands:
@@ -8,6 +8,10 @@ commands:
     description: Starts the 2 minute countdown.
     usage: /<command>
     permission: crownconquest.commands.start
+  stop:
+    description: Stops the game.
+    usage: /<command>
+    permission: crownconquest.commands.stop
   setcrownspawn:
     description: Adds crown spawnpoint.
     usage: /<command>

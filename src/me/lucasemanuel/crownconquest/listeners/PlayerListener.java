@@ -152,11 +152,8 @@ public class PlayerListener implements Listener {
 					&& player.getInventory().getHelmet().getType().equals(Material.GOLD_HELMET)) {
 				
 				plugin.getServer().broadcastMessage(
-						"Lag " 
-						+ ChatColor.LIGHT_PURPLE + plugin.getTeamManager().getTeamNameFromPlayer(player) 
-						+ ChatColor.WHITE + " har fått " 
-						+ ChatColor.GOLD + "1" 
-						+ ChatColor.WHITE + " poäng!"
+						ChatColor.LIGHT_PURPLE + plugin.getTeamManager().getTeamNameFromPlayer(player) 
+						+ ChatColor.WHITE + " har kommit i mål!"
 				);
 				
 				player.getInventory().setHelmet(new ItemStack(Material.PUMPKIN));
@@ -198,8 +195,7 @@ public class PlayerListener implements Listener {
 			}, 1L);
 			
 			plugin.getServer().broadcastMessage(
-					"Lag " + ChatColor.LIGHT_PURPLE 
-					+ plugin.getTeamManager().getTeamNameFromPlayer(player) 
+					plugin.getTeamManager().getTeamNameFromPlayer(player) 
 					+ ChatColor.WHITE + " har plockat upp kronan!"
 			);
 		}
