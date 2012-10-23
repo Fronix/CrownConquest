@@ -104,7 +104,7 @@ public class Main extends JavaPlugin {
 			public void run() {
 				activate();
 			}
-		}, 20L);
+		}, 24000L);
 	}
 	
 	public boolean getStatus() {
