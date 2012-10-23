@@ -21,9 +21,11 @@ import java.util.Map.Entry;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Sign;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import me.lucasemanuel.crownconquest.Main;
 import me.lucasemanuel.crownconquest.utils.ConsoleLogger;
@@ -99,6 +101,7 @@ public class TeamManager {
 		saveData();
 	}
 
+	@SuppressWarnings("deprecation")
 	public boolean addToTeam(Player player, String teamname) {
 		
 		String playerteam = getTeamNameFromPlayer(player);
@@ -110,14 +113,19 @@ public class TeamManager {
 				
 				playerlist.add(player);
 				
+				player.getInventory().setHelmet(new ItemStack(Material.PUMPKIN));
+				player.updateInventory();
+				
 				return true;
 			}
 			else {
-				player.sendMessage(ChatColor.RED + "Du befinner dig redan i laget: " + ChatColor.LIGHT_PURPLE + playerteam);
+				player.sendMessage(ChatColor.RED + "Du befinner dig redan i laget: " 
+									+ ChatColor.LIGHT_PURPLE + playerteam);
 			}
 		}
 		else {
-			logger.warning("Tried to add player: " + player.getName() + " to nonexisting team! Teamname: " + teamname);
+			logger.warning("Tried to add player: " + player.getName() 
+					+ " to nonexisting team! Teamname: " + teamname);
 		}
 		
 		return false;

@@ -17,8 +17,10 @@ package me.lucasemanuel.crownconquest;
 
 import me.lucasemanuel.crownconquest.listeners.BlockListener;
 import me.lucasemanuel.crownconquest.listeners.PlayerListener;
+import me.lucasemanuel.crownconquest.managers.ChestManager;
 import me.lucasemanuel.crownconquest.managers.CommandManager;
 import me.lucasemanuel.crownconquest.managers.CrownManager;
+import me.lucasemanuel.crownconquest.managers.LocationManager;
 import me.lucasemanuel.crownconquest.managers.TeamManager;
 import me.lucasemanuel.crownconquest.utils.*;
 
@@ -29,8 +31,10 @@ public class Main extends JavaPlugin {
 	
 	private ConsoleLogger logger;
 	
-	private TeamManager  teammanager;
-	private CrownManager crownmanager;
+	private TeamManager     teammanager;
+	private CrownManager    crownmanager;
+	private ChestManager    chestmanager;
+	private LocationManager locationmanager;
 	
 	private boolean status = false;
 	
@@ -51,8 +55,10 @@ public class Main extends JavaPlugin {
 		 */
 		logger.debug("Initiating managers...");
 		
-		teammanager  = new TeamManager(this);
-		crownmanager = new CrownManager(this);
+		teammanager     = new TeamManager(this);
+		crownmanager    = new CrownManager(this);
+		chestmanager    = new ChestManager(this);
+		locationmanager = new LocationManager(this);
 		
 		logger.debug("... done!");
 		
@@ -78,6 +84,7 @@ public class Main extends JavaPlugin {
 		this.getCommand("setteamspawn").setExecutor(commands);
 		this.getCommand("spawncrown").setExecutor(commands);
 		this.getCommand("teams").setExecutor(commands);
+		this.getCommand("setspectatorspawn").setExecutor(commands);
 		
 		logger.debug("... done!");
 		
@@ -97,11 +104,19 @@ public class Main extends JavaPlugin {
 			public void run() {
 				activate();
 			}
-		}, 2400L);
+		}, 20L);
 	}
 	
 	public boolean getStatus() {
 		return status;
+	}
+	
+	public LocationManager getLocationManager() {
+		return locationmanager;
+	}
+	
+	public ChestManager getChestManager() {
+		return chestmanager;
 	}
 
 	public TeamManager getTeamManager() {

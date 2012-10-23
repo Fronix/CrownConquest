@@ -72,6 +72,12 @@ public class CommandManager implements CommandExecutor {
 			case "teams":
 				plugin.getTeamManager().sendTeamInfo(sender);
 				return true;
+				
+			case "setspectatorspawn":
+				if(!isPlayer(sender)) return true;
+				
+				plugin.getLocationManager().setSpectatorSpawn(((Player)sender).getLocation());
+				return true;
 		}
 		
 		return false;
