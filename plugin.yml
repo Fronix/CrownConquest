@@ -8,10 +8,10 @@ commands:
     description: Starts the 2 minute countdown.
     usage: /<command>
     permission: crownconquest.commands.start
-  stop:
+  stopcq:
     description: Stops the game.
     usage: /<command>
-    permission: crownconquest.commands.stop
+    permission: crownconquest.commands.stopcq
   setcrownspawn:
     description: Adds crown spawnpoint.
     usage: /<command>

@@ -46,7 +46,7 @@ public class LocationManager {
 		SerializedLocation savedloc = null;
 		
 		try {
-			savedloc = (SerializedLocation) SLAPI.load(plugin.getDataFolder() + "spectatorspawn.dat");
+			savedloc = (SerializedLocation) SLAPI.load(plugin.getDataFolder() + "/spectatorspawn.dat");
 		}
 		catch(Exception e) {
 			logger.warning("Error while loading spectatorspawn! Message: " + e.getMessage());
@@ -74,7 +74,7 @@ public class LocationManager {
 			SerializedLocation temploc = new SerializedLocation(spectatorspawn);
 			
 			try {
-				SLAPI.save(temploc, plugin.getDataFolder() + "spectatorspawn.dat");
+				SLAPI.save(temploc, plugin.getDataFolder() + "/spectatorspawn.dat");
 			}
 			catch(Exception e) {
 				logger.severe("Could not save spectatorspawn! Message: " + e.getMessage());

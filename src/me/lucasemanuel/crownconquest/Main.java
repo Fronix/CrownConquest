@@ -80,7 +80,7 @@ public class Main extends JavaPlugin {
 		CommandManager commands = new CommandManager(this);
 		
 		this.getCommand("start").setExecutor(commands);
-		this.getCommand("stop").setExecutor(commands);
+		this.getCommand("stopcq").setExecutor(commands);
 		this.getCommand("setcrownspawn").setExecutor(commands);
 		this.getCommand("setteamspawn").setExecutor(commands);
 		this.getCommand("spawncrown").setExecutor(commands);

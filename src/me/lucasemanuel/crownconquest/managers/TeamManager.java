@@ -66,7 +66,7 @@ public class TeamManager {
 		 *  --- Spawns
 		 */
 		try {
-			loadedTeamSpawns = (HashMap<String, SerializedLocation>) SLAPI.load("plugins/CrownConquest/teamspawnlocations.dat");
+			loadedTeamSpawns = (HashMap<String, SerializedLocation>) SLAPI.load(plugin.getDataFolder() + "/teamspawnlocations.dat");
 		}
 		catch(Exception e) {
 			logger.warning("Error while loading teamspawnlocations! Message: " + e.getMessage());
@@ -82,7 +82,7 @@ public class TeamManager {
 		 *  --- Signs
 		 */
 		try {
-			loadedSigns = (HashMap<SerializedLocation, String>) SLAPI.load("plugins/CrownConquest/teamsignlocations.dat");
+			loadedSigns = (HashMap<SerializedLocation, String>) SLAPI.load(plugin.getDataFolder() + "/teamsignlocations.dat");
 		}
 		catch(Exception e) {
 			logger.warning("Error while loading teamsignlocations! Message: " + e.getMessage());
@@ -213,8 +213,8 @@ public class TeamManager {
 		}
 		
 		try {
-			SLAPI.save(tempspawn, "plugins/CrownConquest/teamspawnlocations.dat");
-			SLAPI.save(tempsign,  "plugins/CrownConquest/teamsignlocations.dat");
+			SLAPI.save(tempspawn, plugin.getDataFolder() + "/teamspawnlocations.dat");
+			SLAPI.save(tempsign,  plugin.getDataFolder() + "/teamsignlocations.dat");
 		}
 		catch(Exception e) {
 			logger.severe("Error while saving data! Message: " + e.getMessage());
@@ -223,7 +223,7 @@ public class TeamManager {
 
 	public void addToConfiguredTeam(Player player) {
 		
-		String teamname = plugin.getConfig().getString("team." + player.getName());
+		String teamname = plugin.getConfig().getString("team." + player.getName().toLowerCase());
 		
 		if(teamname != null) {
 			addToTeam(player, teamname);

@@ -48,7 +48,7 @@ public class CommandManager implements CommandExecutor {
 				plugin.getServer().broadcastMessage(ChatColor.GOLD + "Spelet startar om " + ChatColor.LIGHT_PURPLE + "2 minuter!");
 				return true;
 				
-			case "stop":
+			case "stopcq":
 				plugin.stop();
 				return true;
 				
