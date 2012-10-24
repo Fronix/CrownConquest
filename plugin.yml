@@ -1,6 +1,6 @@
 name: CrownConquest
 main: me.lucasemanuel.crownconquest.Main
-version: 1.5
+version: 1.5.1
 depend: [WorldGuard, WorldEdit]
 
 commands:
