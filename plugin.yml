@@ -4,7 +4,7 @@ version: 1.5.1
 depend: [WorldGuard, WorldEdit]
 
 commands:
-  start:
+  startcq:
     description: Starts the 2 minute countdown.
     usage: /<command>
     permission: crownconquest.commands.start
