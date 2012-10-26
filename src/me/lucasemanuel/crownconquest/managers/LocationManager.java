@@ -58,6 +58,7 @@ public class LocationManager {
 	}
 	
 	public void setSpectatorSpawn(Location location) {
+		logger.debug("Setting spectatorspawn");
 		spectatorspawn = location;
 	}
 	
@@ -66,6 +67,8 @@ public class LocationManager {
 	}
 
 	public void saveSpectatorSpawn() {
+		
+		logger.debug("Saving data");
 
 		if(spectatorspawn != null) {
 			

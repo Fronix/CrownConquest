@@ -87,6 +87,9 @@ public class PlayerListener implements Listener {
 			plugin.getTeamManager().addToConfiguredTeam(event.getPlayer());
 			plugin.getTeamManager().teleportToTeamSpawn(event.getPlayer());
 		}
+		else {
+			event.getPlayer().teleport(plugin.getLocationManager().getSpectatorSpawn());
+		}
 	}
 	
 	@EventHandler(priority=EventPriority.HIGHEST, ignoreCancelled=true)
@@ -183,9 +186,9 @@ public class PlayerListener implements Listener {
 			
 			player.getInventory().setHelmet(new ItemStack(Material.GOLD_HELMET));
 			
-			player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 72000000, 3));
+			player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 72000000, 1));
 			player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 72000000, 3));
-			player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 72000000, 1));
+			player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 72000000, 0));
 			
 			plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 				public void run() {
@@ -195,7 +198,7 @@ public class PlayerListener implements Listener {
 			}, 1L);
 			
 			plugin.getServer().broadcastMessage(
-					plugin.getTeamManager().getTeamNameFromPlayer(player) 
+					"Lag: " + ChatColor.GOLD + plugin.getTeamManager().getTeamNameFromPlayer(player) 
 					+ ChatColor.WHITE + " har plockat upp kronan!"
 			);
 		}

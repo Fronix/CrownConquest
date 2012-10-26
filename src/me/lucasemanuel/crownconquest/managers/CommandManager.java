@@ -45,7 +45,7 @@ public class CommandManager implements CommandExecutor {
 			
 			case "startcq":
 				plugin.start();
-				plugin.getServer().broadcastMessage(ChatColor.GOLD + "Spelet startar om " + ChatColor.LIGHT_PURPLE + "2 minuter!");
+				plugin.getServer().broadcastMessage(ChatColor.GOLD + "PVP aktiveras om " + ChatColor.LIGHT_PURPLE + "2 minuter!");
 				return true;
 				
 			case "stopcq":
@@ -79,7 +79,7 @@ public class CommandManager implements CommandExecutor {
 				
 			case "setspectatorspawn":
 				if(!isPlayer(sender)) return true;
-				
+				sender.sendMessage(ChatColor.GREEN + "Spectator plats sparad!");
 				plugin.getLocationManager().setSpectatorSpawn(((Player)sender).getLocation());
 				return true;
 				
