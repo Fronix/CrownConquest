@@ -82,6 +82,14 @@ public class CommandManager implements CommandExecutor {
 				
 				plugin.getLocationManager().setSpectatorSpawn(((Player)sender).getLocation());
 				return true;
+				
+			case "savecq":
+				sender.sendMessage(ChatColor.GREEN + "Saving data...");
+				
+				plugin.getTeamManager().saveData();
+				plugin.getLocationManager().saveSpectatorSpawn();
+				
+				return true;
 		}
 		
 		return false;

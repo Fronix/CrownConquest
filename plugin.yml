@@ -32,6 +32,10 @@ commands:
     description: Sets the place dead players will spawn in.
     usage: /<command>
     permission: crownconquest.commands.setspectatorspawn
+  savecq:
+    description: Saves registered data.
+    usage: /<command>
+    permission: crownconquest.commands.savecq
     
     
 permissions:

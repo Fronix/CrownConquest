@@ -86,6 +86,8 @@ public class Main extends JavaPlugin {
 		this.getCommand("spawncrown").setExecutor(commands);
 		this.getCommand("teams").setExecutor(commands);
 		this.getCommand("setspectatorspawn").setExecutor(commands);
+		this.getCommand("savecq").setExecutor(commands);
+		
 		
 		logger.debug("... done!");
 		

@@ -59,15 +59,13 @@ public class LocationManager {
 	
 	public void setSpectatorSpawn(Location location) {
 		spectatorspawn = location;
-		
-		saveSpectatorSpawn();
 	}
 	
 	public Location getSpectatorSpawn() {
 		return spectatorspawn;
 	}
 
-	private void saveSpectatorSpawn() {
+	public void saveSpectatorSpawn() {
 
 		if(spectatorspawn != null) {
 			

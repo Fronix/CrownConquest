@@ -66,15 +66,17 @@ public class TeamManager {
 		 *  --- Spawns
 		 */
 		try {
-			loadedTeamSpawns = (HashMap<String, SerializedLocation>) SLAPI.load(plugin.getDataFolder() + "/teamspawnlocations.dat");
+			logger.debug("Loading teamspawns...");
+			loadedTeamSpawns = (HashMap<String, SerializedLocation>) SLAPI.load("plugins/CrownConquest/teamspawnlocations.dat");
 		}
 		catch(Exception e) {
 			logger.warning("Error while loading teamspawnlocations! Message: " + e.getMessage());
 		}
 		
 		if(loadedTeamSpawns != null) {
+			logger.debug("Registering teamspawns...");
 			for(Entry<String, SerializedLocation> entry : loadedTeamSpawns.entrySet()) {
-				teamspawnlocations.put(entry.getKey(), entry.getValue().deserialize());
+				setSpawn(entry.getValue().deserialize(), entry.getKey());
 			}
 		}
 		
@@ -82,14 +84,20 @@ public class TeamManager {
 		 *  --- Signs
 		 */
 		try {
-			loadedSigns = (HashMap<SerializedLocation, String>) SLAPI.load(plugin.getDataFolder() + "/teamsignlocations.dat");
+			logger.debug("Loading teamsigns...");
+			loadedSigns = (HashMap<SerializedLocation, String>) SLAPI.load("plugins/CrownConquest/teamsignlocations.dat");
 		}
 		catch(Exception e) {
 			logger.warning("Error while loading teamsignlocations! Message: " + e.getMessage());
 		}
 		
 		if(loadedSigns != null) {
+			
+			logger.debug("Registering teamsigns...");
+			logger.debug("Amount of saved signs: " + loadedSigns.size());
+			
 			for(Entry<SerializedLocation, String> entry : loadedSigns.entrySet()) {
+				logger.debug("Adding sign");
 				registerTeamSign(((Sign)entry.getKey().deserialize().getBlock().getState()), entry.getValue());
 			}
 		}
@@ -98,11 +106,24 @@ public class TeamManager {
 	public void setSpawn(Location location, String teamname) {
 		teamspawnlocations.put(teamname, location);
 		
-		saveData();
+		registerTeam(teamname);
+	}
+	
+	private void registerTeam(String teamname) {
+		logger.debug("Trying to register team: " + teamname);
+		
+		if(!playerlists.containsKey(teamname)) {
+			playerlists.put(teamname, new HashSet<Player>());
+			logger.debug("Team registered!");
+		}
+		else
+			logger.debug("Team already registered!");
 	}
 
 	@SuppressWarnings("deprecation")
 	public boolean addToTeam(Player player, String teamname) {
+		
+		logger.debug("Trying to add player " + player.getName() + " to team " + teamname);
 		
 		String playerteam = getTeamNameFromPlayer(player);
 		
@@ -133,8 +154,11 @@ public class TeamManager {
 
 	public void registerTeamSign(Sign sign, String teamname) {
 		
+		logger.debug("Registering teamsign for team " + teamname);
+		
 		teamsignlocations.put(sign.getLocation(), teamname);
-		playerlists.put(teamname, new HashSet<Player>());
+
+		registerTeam(teamname);
 		
 		sign.setLine(0, "");
 		sign.setLine(1, ChatColor.GOLD + " - Lag - ");
@@ -142,8 +166,6 @@ public class TeamManager {
 		sign.setLine(3, "");
 		
 		sign.update();
-		
-		saveData();
 	}
 
 	public String getTeamNameFromSign(Location location) {
@@ -168,7 +190,7 @@ public class TeamManager {
 			}
 		}
 		else {
-			player.sendMessage(ChatColor.RED + "Laget finns inte!");
+			logger.debug("Tried to teleport player " + player.getName() + " to nonexisting team");
 		}
 	}
 
@@ -199,22 +221,26 @@ public class TeamManager {
 		}
 	}
 	
-	private void saveData() {
+	public void saveData() {
+		
+		logger.debug("Saving data");
 		
 		HashMap<String, SerializedLocation> tempspawn = new HashMap<String, SerializedLocation>();
 		HashMap<SerializedLocation, String> tempsign  = new HashMap<SerializedLocation, String>();
 		
+		logger.debug("Amount of spawns to save: " + teamspawnlocations.size());
 		for(Entry<String, Location> entry : teamspawnlocations.entrySet()) {
 			tempspawn.put(entry.getKey(), new SerializedLocation(entry.getValue()));
 		}
 		
+		logger.debug("Amount of signs to save: " + teamsignlocations.size());
 		for(Entry<Location, String> entry : teamsignlocations.entrySet()) {
 			tempsign.put(new SerializedLocation(entry.getKey()), entry.getValue());
 		}
 		
 		try {
-			SLAPI.save(tempspawn, plugin.getDataFolder() + "/teamspawnlocations.dat");
-			SLAPI.save(tempsign,  plugin.getDataFolder() + "/teamsignlocations.dat");
+			SLAPI.save(tempspawn, "plugins/CrownConquest/teamspawnlocations.dat");
+			SLAPI.save(tempsign,  "plugins/CrownConquest/teamsignlocations.dat");
 		}
 		catch(Exception e) {
 			logger.severe("Error while saving data! Message: " + e.getMessage());
