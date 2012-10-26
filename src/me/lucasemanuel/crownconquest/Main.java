@@ -99,7 +99,7 @@ public class Main extends JavaPlugin {
 	
 	private void activate() {
 		status = true;
-		this.getServer().broadcastMessage(ChatColor.GOLD + "Spelet har startat!");
+		this.getServer().broadcastMessage(ChatColor.GOLD + "PVP har aktiverats!");
 	}
 
 	public void start() {
