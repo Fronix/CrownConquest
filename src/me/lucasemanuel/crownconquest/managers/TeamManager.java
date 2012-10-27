@@ -186,7 +186,7 @@ public class TeamManager {
 				player.teleport(spawn);
 			}
 			else {
-				player.sendMessage(ChatColor.RED + "Finns ingen spawn f�r laget!");
+				player.sendMessage(ChatColor.RED + "Finns ingen spawn f�r laget!");
 			}
 		}
 		else {
@@ -256,6 +256,10 @@ public class TeamManager {
 		}
 	}
 
+/**
+ * TODO: Gör så att den skriver ut i nummer ordrning.
+ * TODO: Kanske lägga till spelarnas namn på något snyggt sätt?
+ */
 	public void sendTeamInfo(CommandSender sender) {
 
 		for(Entry<String, HashSet<Player>> entry : playerlists.entrySet()) {
